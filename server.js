@@ -5,10 +5,16 @@ const path = require('path');
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 const cron = require('node-cron');
+const cors = require('cors');  // Add CORS import
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const imageMap = new Map();  // Map to store image paths against IDs
+
+// Configure CORS
+app.use(cors({
+  origin: 'https://autoimagegeneration.netlify.app', // Replace with your frontend URL
+}));
 
 app.use(express.static('public'));
 app.use(express.json());  // Add this line to parse JSON request bodies
