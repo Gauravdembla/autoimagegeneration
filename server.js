@@ -13,6 +13,7 @@ const imageMap = new Map();  // Map to store image paths against IDs
 
 app.use(cors());
 app.use(express.static('public'));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'))); // Serve static files from /uploads
 app.use(express.json());  // Add this line to parse JSON request bodies
 
 const storage = multer.diskStorage({
